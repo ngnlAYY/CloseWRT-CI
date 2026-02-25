@@ -75,7 +75,11 @@ jobs:
           sudo -E apt -yqq autoclean
           sudo -E apt -yqq clean
           sudo -E apt -yqq install dos2unix python3-netifaces libfuse-dev
+
+          echo "===> [$(date -Iseconds)] Start init_build_environment.sh (may take 15-30 min)..."
           sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+          echo "===> [$(date -Iseconds)] init_build_environment.sh done."
+
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
 
